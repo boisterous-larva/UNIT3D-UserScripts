@@ -8,8 +8,8 @@
 // @match        https://*/torrents/similar/*
 // @namespace    https://www.tampermonkey.net/
 // @author       boisterous-larva
-// @updateURL    https://github.com/boisterous-larva/UNIT3D-IS-COOL/raw/refs/heads/main/add-ratings.user.js
-// @downloadURL  https://github.com/boisterous-larva/UNIT3D-IS-COOL/raw/refs/heads/main/add-ratings.user.js
+// @updateURL    https://github.com/boisterous-larva/UNIT3D-UserScripts/raw/refs/heads/main/add-ratings.user.js
+// @downloadURL  https://github.com/boisterous-larva/UNIT3D-UserScripts/raw/refs/heads/main/add-ratings.user.js
 // @grant        GM.xmlHttpRequest
 // ==/UserScript==
 
@@ -128,6 +128,7 @@
                 console.log("Letterboxd data found.");
                 const ratingValue = aggregateRating.ratingValue;
                 const ratingCount = aggregateRating.ratingCount;
+                const originalLetterboxdElement = document.querySelector('.meta__imdb').remove();
                 buildElement(siteName, response.finalUrl, logoURL, ratingValue, ratingCount);
               }
             } else {
