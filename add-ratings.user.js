@@ -128,7 +128,7 @@
                 console.log("Letterboxd data found.");
                 const ratingValue = aggregateRating.ratingValue;
                 const ratingCount = aggregateRating.ratingCount;
-                const originalLetterboxdElement = document.querySelector('.meta__imdb').remove();
+                const originalLetterboxdElement = document.querySelector('.meta__letterboxd').remove();
                 buildElement(siteName, response.finalUrl, logoURL, ratingValue, ratingCount);
               }
             } else {
