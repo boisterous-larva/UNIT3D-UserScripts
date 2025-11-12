@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         UNIT3D Add Letterboxd/IMDB/RT rating
-// @version      1.1
+// @version      1.2
 // @description  Add Ratings from Letterboxd/IMDB/Rotten Tomatoes to the torrent page.
 // @license      MIT
 // @match        https://*/torrents/*
@@ -29,15 +29,26 @@
     if (id) {
       handleIMDB(id)
       handleLetterboxd(id);
+      getRottenID(id);
     }
 
   }
 
-  function getRottenID() {
-    let rottenURL = document.querySelector('.meta__rotten a').href;
-    if (rottenURL) {
-      handleRotten(rottenURL);
-    } else return;
+  function getRottenID(IMDbID) {
+    // get Rotten Tomatoes movie alias from Rotten Tomatoes API
+    GM.xmlHttpRequest({
+        method: "GET",
+        url: "http://www.omdbapi.com/?apikey=6be019fc&tomatoes=true&i=" + IMDbID,
+        onload: function(response) {
+            var json = JSON.parse(response.responseText);
+            if (json && json.tomatoURL && json.tomatoURL != "N/A") {
+                handleRotten(json.tomatoURL);
+            }
+            else if (json && json.Error) {
+                console.log("Error: " + json.Error);
+            }
+        }
+    });
   }
 
 
