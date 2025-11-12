@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         UNIT3D Add Letterboxd/IMDB/RT rating
-// @version      1.0
+// @version      1.1
 // @description  Add Ratings from Letterboxd/IMDB/Rotten Tomatoes to the torrent page.
 // @license      MIT
 // @match        https://*/torrents/*
